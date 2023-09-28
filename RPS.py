@@ -8,3 +8,17 @@ def player(prev_play, opponent_history=[]):
         guess = opponent_history[-2]
 
     return guess
+
+# Solution to defeat opponent
+
+def player(prev_play, opponent_history=[]):
+  """Returns a move that is more likely to counter the opponent's previous move."""
+
+  moves = ["R", "P", "S"]
+
+  # If the opponent has played rock twice in a row, play paper.
+  if len(opponent_history) >= 2 and opponent_history[-2] == opponent_history[-1] == "R":
+    return "P"
+
+  # Otherwise, return a random move.
+  return random.choice(moves)
